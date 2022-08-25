@@ -14,8 +14,6 @@ This is my first .Net 6.0 project
 
 ## Installation
 
-Install my-project with npm
-
 Run:
 ```bash
 cd <Your_project_dir>/src/
