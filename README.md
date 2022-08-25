@@ -47,6 +47,7 @@ dotnet ef migrations remove -s NetBlog.Api  -p NetBlog.Infrastructure --context 
 ## Documentation
 
 *this section will be updated soon*
+[DOCS LINK](https://github.com/Sh0w3D/NetBlog-backend/wiki/Project-documentation)
 
 
 ## Running Tests (**tests will be added soon!🚀**)
