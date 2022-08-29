@@ -1,4 +1,5 @@
 using NetBlog.Application;
+using NetBlog.Infrastructure.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,11 +16,22 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    app.UseDeveloperExceptionPage();
+    app.UseMigrationsEndPoint();
     app.UseSwagger();
     app.UseSwaggerUI();
+    using (var scope = app.Services.CreateScope())
+    {
+        var initialiser = scope.ServiceProvider.GetRequiredService<ApplicationDbContextInitializer>();
+        await initialiser.InitializeAsync();
+        await initialiser.TrySeedAsync();
+    }
 }
 
+app.UseHsts();
+app.UseHealthChecks("/health");
 app.UseHttpsRedirection();
+app.UseIdentityServer();
 
 app.UseAuthorization();
 

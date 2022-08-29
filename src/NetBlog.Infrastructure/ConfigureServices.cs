@@ -6,6 +6,7 @@ using NetBlog.Application.Common.Interfaces;
 using NetBlog.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
 using NetBlog.Infrastructure.Services;
+using Microsoft.AspNetCore.Authentication;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
@@ -33,6 +34,9 @@ public static class ConfigureServices
 
         services.AddTransient<IDateTime, DateTimeService>();
         services.AddTransient<IIdentityService, IdentityService>();
+
+        services.AddAuthentication()
+            .AddIdentityServerJwt();
 
         services.AddAuthorization(options =>
             options.AddPolicy("CanPurge", policy => policy.RequireRole("Administrator")));

@@ -11,8 +11,16 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 public static class ConfigureServices
 {
+    /// <summary>
+    /// This method is used in Program.cs to register
+    /// WebApi services
+    /// </summary>
+    /// <param name="services"></param>
+    /// <returns>IServiceCollection services</returns>
     public static IServiceCollection AddNetBlogApiServices(this IServiceCollection services)
     {
+        services.AddDatabaseDeveloperPageExceptionFilter();
+
         services.AddSingleton<ICurrentUserService, CurrentUserService>();
 
         services.AddHttpContextAccessor();
@@ -20,10 +28,11 @@ public static class ConfigureServices
         services.AddHealthChecks()
             .AddDbContextCheck<ApplicationDbContext>();
 
+#pragma warning disable CS0618 // Type or member is obsolete
         services.AddControllersWithViews(options =>
-            options.Filters.Add<ApiExceptionFilterAttribute>());
-
-        services.AddFluentValidationAutoValidation();
+            options.Filters.Add<ApiExceptionFilterAttribute>())
+                .AddFluentValidation(x => x.AutomaticValidationEnabled = false);
+#pragma warning restore CS0618 // Type or member is obsolete
 
         services.AddRazorPages();
 
@@ -36,10 +45,10 @@ public static class ConfigureServices
             options.SwaggerDoc("v1", new OpenApiInfo { Title = "NetBlog Api", Version = "v1" });
             options.AddSecurityDefinition(JwtBearerDefaults.AuthenticationScheme, new OpenApiSecurityScheme()
             {
-                Description = "JWT Authorization header using the bearer",
+                Type = SecuritySchemeType.ApiKey,
                 Name = "Authorization",
                 In = ParameterLocation.Header,
-                Type = SecuritySchemeType.ApiKey
+                Description = "In the textbox type: 'Bearer { generated JWT Token }'",
             });
             options.AddSecurityRequirement(new OpenApiSecurityRequirement
             {
