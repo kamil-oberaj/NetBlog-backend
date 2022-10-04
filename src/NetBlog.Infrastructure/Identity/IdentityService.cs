@@ -32,6 +32,7 @@ public class IdentityService : IIdentityService
     {
         var user = new ApplicationUser
         {
+            Id = Guid.NewGuid().ToString(),
             UserName = userName,
             Email = userName
         };

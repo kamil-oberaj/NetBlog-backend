@@ -1,11 +1,12 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using NetBlog.Infrastructure.Identity;
 
 namespace NetBlog.Infrastructure.Persistence;
 
-public class ApplicationDbContextInitializer
+public class ApplicationDbContextInitializer : IdentityDbContext<ApplicationUser>
 {
     private readonly ILogger<ApplicationDbContextInitializer> _logger;
     private readonly ApplicationDbContext _context;
@@ -38,33 +39,5 @@ public class ApplicationDbContextInitializer
             _logger.LogError(ex, "An error occurred while initialising the database.");
             throw;
         }
-    }
-
-    /// <summary>
-    /// This function creates new administrator for application
-    /// Change password later!
-    /// </summary>
-    public async Task TrySeedAsync()
-    {
-        // Default roles
-        var administratorRole = new IdentityRole("Administrator");
-
-        if (_roleManager.Roles.All(r => r.Name != administratorRole.Name))
-            await _roleManager.CreateAsync(administratorRole);
-
-        // Default users
-        var administrator = new ApplicationUser
-        {
-            UserName = "administrator@localhost",
-            Email = "administrator@localhost"
-        };
-
-        if (_userManager.Users.All(u => u.UserName != administrator.UserName))
-        {
-            await _userManager.CreateAsync(administrator, "Admin#2022");
-            await _userManager.AddToRolesAsync(administrator, new[] { administratorRole.Name });
-        }
-
-        // Under this comment add (if needed) new seeders
     }
 }

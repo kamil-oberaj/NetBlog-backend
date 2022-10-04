@@ -12,9 +12,4 @@ public static class ApiRoutes
         public const string ConfirmEmail = Base + "/identity/confirmEmail";
         public const string ResetPassword = Base + "/identity/resetPassword";
     }
-
-    public static class WeatherForecast
-    {
-        public const string Get = Base + "/weatherForecast";
-    }
 }

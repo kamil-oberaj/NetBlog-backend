@@ -1,4 +1,3 @@
-using NetBlog.Application;
 using NetBlog.Infrastructure.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
