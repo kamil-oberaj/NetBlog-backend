@@ -4,7 +4,7 @@ using NetBlog.Domain.Constants;
 namespace NetBlog.Application.Common.Exceptions;
 public class NetBlogValidationException
     : Exception,
-        IBaseValidationException
+    IBaseValidationException
 {
     public NetBlogValidationException()
     {
@@ -18,11 +18,18 @@ public class NetBlogValidationException
     }
 
     public NetBlogValidationException(
+        string? message
+    ) : base(message)
+    {
+        Errors = new Dictionary<string, string[]>();
+    }
+
+    public NetBlogValidationException(
         string? message,
         Exception? innerException)
         : base(message, innerException)
     {
-        Errors = default!;
+        Errors = new Dictionary<string, string[]>();
     }
 
     public IDictionary<string, string[]> Errors { get; }
