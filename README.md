@@ -17,7 +17,7 @@ This is my first .Net 6.0 project
 Run:
 ```bash
 cd <Your_project_dir>/src/
-dotnet run NetBlog.Api
+dotnet run --project NetBlog.Api
 ```
 Run with watch:
 ```bash

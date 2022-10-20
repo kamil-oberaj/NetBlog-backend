@@ -1,7 +1,6 @@
 using NetBlog.Api;
 using NetBlog.Application;
 using NetBlog.Infrastructure;
-using NetBlog.Infrastructure.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
