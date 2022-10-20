@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetBlog.Domain", "src\NetBl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetBlog.Infrastructure", "src\NetBlog.Infrastructure\NetBlog.Infrastructure.csproj", "{3F495FA7-D309-454E-B79D-5B89BAA8D374}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{00089515-B07C-4846-B568-6C2B65AD8482}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2E24985C-1BB3-48EF-8E63-8C47F7EC14AD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,5 +61,11 @@ Global
 		$0.TextStylePolicy = $5
 		$5.inheritsSet = null
 		$5.scope = text/x-vs
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D2E8C7A6-6C28-41CB-8AB5-4FD2DB9D7847} = {2E24985C-1BB3-48EF-8E63-8C47F7EC14AD}
+		{78CA2646-B39F-4718-ABC6-3B0F4C53A23E} = {2E24985C-1BB3-48EF-8E63-8C47F7EC14AD}
+		{5EEB6EA4-77DB-414D-BB4A-57E3D9CAFFC9} = {2E24985C-1BB3-48EF-8E63-8C47F7EC14AD}
+		{3F495FA7-D309-454E-B79D-5B89BAA8D374} = {2E24985C-1BB3-48EF-8E63-8C47F7EC14AD}
 	EndGlobalSection
 EndGlobal

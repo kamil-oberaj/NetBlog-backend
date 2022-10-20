@@ -20,6 +20,9 @@
     <None Remove="AutoMapper.Extensions.Microsoft.DependencyInjection" />
     <None Remove="Common\Behaviours\" />
     <None Remove="Common\Security\" />
+    <None Remove="Authentication\" />
+    <None Remove="Authentication\Commands\" />
+    <None Remove="Authentication\Commands\SignUp\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
@@ -31,6 +34,5 @@
     <Folder Include="Common\" />
     <Folder Include="Common\Exceptions\" />
     <Folder Include="Common\Behaviours\" />
-    <Folder Include="Common\Security\" />
   </ItemGroup>
 </Project>

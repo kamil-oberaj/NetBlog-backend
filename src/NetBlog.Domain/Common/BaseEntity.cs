@@ -4,7 +4,7 @@ namespace NetBlog.Domain.Common;
 
 public class BaseEntity
 {
-    public int Id { get; set; }
+    public Guid Id { get; set; }
 
     private readonly List<BaseEvent> _domainEvents = new();
 

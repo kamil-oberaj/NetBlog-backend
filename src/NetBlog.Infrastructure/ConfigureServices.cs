@@ -1,20 +1,24 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using NetBlog.Infrastructure.Persistence;
-using NetBlog.Infrastructure.Persistence.Interceptors;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using NetBlog.Application.Common.Interfaces;
 using NetBlog.Infrastructure.Identity;
-using Microsoft.AspNetCore.Identity;
-using NetBlog.Infrastructure.Services;
-using Microsoft.AspNetCore.Authentication;
+using NetBlog.Infrastructure.Persistence;
+using NetBlog.Infrastructure.Persistence.Interceptors;
+using NetBlog.Infrastructure.Common.Providers;
 
-namespace Microsoft.Extensions.DependencyInjection;
+namespace NetBlog.Infrastructure;
 
 public static class ConfigureServices
 {
-    public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddInfrastructureServices(
+            this IServiceCollection services,
+            IConfiguration configuration)
     {
         services.AddScoped<AuditableEntitySaveChangesInterceptor>();
+
+        #region DbContext
 
         services.AddDbContext<ApplicationDbContext>(options =>
             options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"),
@@ -22,24 +26,18 @@ public static class ConfigureServices
 
         services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<ApplicationDbContext>());
 
-        services.AddScoped<ApplicationDbContextInitializer>();
+        #endregion
+
+        #region Services
 
         services
             .AddDefaultIdentity<ApplicationUser>()
             .AddRoles<IdentityRole>()
             .AddEntityFrameworkStores<ApplicationDbContext>();
 
-        services.AddIdentityServer()
-            .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
+        services.AddTransient<IDateTimeProvider, DateTimeProvider>();
 
-        services.AddTransient<IDateTime, DateTimeService>();
-        services.AddTransient<IIdentityService, IdentityService>();
-
-        services.AddAuthentication()
-            .AddIdentityServerJwt();
-
-        services.AddAuthorization(options =>
-            options.AddPolicy("CanPurge", policy => policy.RequireRole("Administrator")));
+        #endregion
 
         return services;
     }

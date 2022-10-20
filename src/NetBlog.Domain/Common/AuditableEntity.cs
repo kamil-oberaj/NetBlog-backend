@@ -1,6 +1,6 @@
 namespace NetBlog.Domain.Common;
 
-public abstract class BaseAudiableEntity : BaseEntity
+public abstract class AuditableEntity : BaseEntity
 {
     public DateTime Created { get; set; }
     public string? CreatedBy { get; set; }

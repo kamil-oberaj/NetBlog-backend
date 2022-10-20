@@ -25,8 +25,9 @@
     <None Remove="FluentValidation.AspNetCore" />
     <None Remove="Filters\" />
     <None Remove="Microsoft.AspNetCore.Authentication.JwtBearer" />
+    <None Remove="Controllers\Identity\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Filters\" />
+    <Folder Include="Controllers" />
   </ItemGroup>
 </Project>

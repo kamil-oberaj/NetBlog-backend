@@ -1,4 +1,6 @@
+using NetBlog.Api;
 using NetBlog.Application;
+using NetBlog.Infrastructure;
 using NetBlog.Infrastructure.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,12 +22,6 @@ if (app.Environment.IsDevelopment())
     app.UseMigrationsEndPoint();
     app.UseSwagger();
     app.UseSwaggerUI();
-    using (var scope = app.Services.CreateScope())
-    {
-        var initialiser = scope.ServiceProvider.GetRequiredService<ApplicationDbContextInitializer>();
-        await initialiser.InitializeAsync();
-        await initialiser.TrySeedAsync();
-    }
 }
 
 app.UseHsts();

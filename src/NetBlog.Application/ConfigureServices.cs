@@ -1,27 +1,21 @@
 using System.Reflection;
-using MediatR;
 using FluentValidation;
+using MediatR;
+using Microsoft.Extensions.DependencyInjection;
 using NetBlog.Application.Common.Behaviours;
 
-namespace Microsoft.Extensions.DependencyInjection;
+namespace NetBlog.Application;
 
 public static class DependencyInjection
 {
-    /// <summary>
-    /// This method is used in Program.cs to register NetBlog.Application
-    /// Services
-    /// </summary>
-    /// <param name="services"></param>
-    /// <returns>IServiceCollection services</returns>
-    public static IServiceCollection AddApplicationServices(this IServiceCollection services)
+    public static IServiceCollection AddApplicationServices(
+        this IServiceCollection services)
     {
-        services.AddAutoMapper(Assembly.GetExecutingAssembly());
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
         services.AddMediatR(Assembly.GetExecutingAssembly());
-        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(UnhandledExceptionBehaviour<,>));
-        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(AuthorizationBahaviour<,>));
-        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
-        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(PreformanceBahaviour<,>));
+        services.AddTransient(
+            typeof(IPipelineBehavior<,>), 
+            typeof(ValidationBehavior<,>));
 
         return services;
     }

@@ -1,13 +1,11 @@
-﻿using FluentValidation.AspNetCore;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;
-using NetBlog.Api.Filters;
 using NetBlog.Api.Services;
 using NetBlog.Application.Common.Interfaces;
 using NetBlog.Infrastructure.Persistence;
 
-namespace Microsoft.Extensions.DependencyInjection;
+namespace NetBlog.Api;
 
 public static class ConfigureServices
 {
@@ -27,12 +25,6 @@ public static class ConfigureServices
 
         services.AddHealthChecks()
             .AddDbContextCheck<ApplicationDbContext>();
-
-#pragma warning disable CS0618 // Type or member is obsolete
-        services.AddControllersWithViews(options =>
-            options.Filters.Add<ApiExceptionFilterAttribute>())
-                .AddFluentValidation(x => x.AutomaticValidationEnabled = false);
-#pragma warning restore CS0618 // Type or member is obsolete
 
         services.AddRazorPages();
 

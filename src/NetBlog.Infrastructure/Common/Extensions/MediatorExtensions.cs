@@ -1,7 +1,8 @@
-using NetBlog.Domain.Common;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
+using NetBlog.Domain.Common;
 
-namespace MediatR;
+namespace NetBlog.Infrastructure.Common.Extensions;
 
 public static class MediatorExtensions
 {

@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <None Remove="MediatR" />
+    <None Remove="Entities\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MediatR" Version="10.0.1" />
