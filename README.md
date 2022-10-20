@@ -1,7 +1,7 @@
 
 # NetBlog Backend
 
-This is my first .Net 6.0 project 
+Project created as a portfolio idea, implementing TDD (integration and unit tests), MediatR, FluentValidation, PostgreSql and many more!
 
 ## Features
 
