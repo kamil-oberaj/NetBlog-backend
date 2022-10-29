@@ -1,6 +1,9 @@
 
 # NetBlog Backend
 
+Statuses:
+[![.NET build](https://github.com/Sh0w3D/NetBlog-backend/actions/workflows/dotnet.yml/badge.svg?branch=Dev)](https://github.com/Sh0w3D/NetBlog-backend/actions/workflows/dotnet.yml)
+
 Project created as a portfolio idea, implementing TDD (integration and unit tests), MediatR, FluentValidation, PostgreSql and many more!
 
 ## Features
