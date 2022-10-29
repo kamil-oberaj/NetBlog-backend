@@ -11,5 +11,5 @@ public class DomainEventNotification<TDomainEvent>
         DomainEvent = domainEvent;
     }
 
-    public TDomainEvent DomainEvent { get; }
+    private TDomainEvent DomainEvent { get; }
 }

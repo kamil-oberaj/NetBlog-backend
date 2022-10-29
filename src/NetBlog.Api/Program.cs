@@ -1,35 +1,37 @@
 using NetBlog.Api;
 using NetBlog.Application;
 using NetBlog.Infrastructure;
+using NetBlog.Infrastructure.Persistence.Initializers;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-builder.Services.AddApplicationServices();
-builder.Services.AddInfrastructureServices(builder.Configuration);
-builder.Services.AddNetBlogApiServices();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
 {
-    app.UseDeveloperExceptionPage();
-    app.UseMigrationsEndPoint();
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    // Add services to the container.
+    builder.Services
+        .AddApplicationServices()
+        .AddInfrastructureServices(builder.Configuration)
+        .AddNetBlogApiServices();
 }
 
-app.UseHsts();
-app.UseHealthChecks("/health");
-app.UseHttpsRedirection();
-app.UseIdentityServer();
+var app = builder.Build();
+{
+// Configure the HTTP request pipeline.
+    if (app.Environment.IsDevelopment())
+    {
+        app.UseSwagger();
+        app.UseSwaggerUI();
 
-app.UseAuthorization();
+        var scope = app.Services.CreateScope();
+        var identityInitializer = scope.ServiceProvider.GetRequiredService<ApplicationIdentityDbContextInitializer>();
+        await identityInitializer.InitializeAsync();
 
-app.MapControllers();
+        var businessInitializer = scope.ServiceProvider.GetRequiredService<ApplicationDbContextInitializer>();
+        await businessInitializer.InitializeAsync();
+    }
 
-app.Run();
+    app.UseExceptionHandler("/error");
+    app.UseHttpsRedirection();
+    app.UseAuthentication();
+    app.UseAuthorization();
+    app.MapControllers();
+    app.Run();
+}

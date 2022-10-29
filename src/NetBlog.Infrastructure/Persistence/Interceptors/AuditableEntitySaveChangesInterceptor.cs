@@ -1,7 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Diagnostics;
-using NetBlog.Application.Common.Interfaces;
+using NetBlog.Application.Common.Interfaces.Providers;
+using NetBlog.Application.Common.Interfaces.Services;
 using NetBlog.Domain.Common;
 
 namespace NetBlog.Infrastructure.Persistence.Interceptors;

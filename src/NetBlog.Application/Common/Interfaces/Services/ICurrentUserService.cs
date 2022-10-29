@@ -1,4 +1,4 @@
-namespace NetBlog.Application.Common.Interfaces;
+namespace NetBlog.Application.Common.Interfaces.Services;
 
 public interface ICurrentUserService
 {

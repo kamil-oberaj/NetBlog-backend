@@ -1,7 +1,7 @@
 namespace NetBlog.Infrastructure.Common.Constants;
 
-public static class DbSchemas
+internal static class DbSchemas
 {
-    public static string Identity = "Identity";
-    public static string Business = "Business";
+    internal const string Identity = "Identity";
+    internal const string Business = "Business";
 }

@@ -2,6 +2,8 @@ using System.Reflection;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using NetBlog.Application.Common.Interfaces;
+using NetBlog.Application.Common.Interfaces.Contexts;
+using NetBlog.Domain.Entities;
 using NetBlog.Infrastructure.Common.Constants;
 using NetBlog.Infrastructure.Common.Extensions;
 using NetBlog.Infrastructure.Persistence.Interceptors;
@@ -21,6 +23,12 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
         _mediator = mediator;
         _auditableEntitySaveChangesInterceptor = auditableEntitySaveChangesInterceptor;
     }
+
+    #region DbSets
+
+    public DbSet<Person> Persons => Set<Person>();
+
+    #endregion
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

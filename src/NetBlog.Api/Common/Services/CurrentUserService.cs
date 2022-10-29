@@ -1,7 +1,7 @@
 using System.Security.Claims;
-using NetBlog.Application.Common.Interfaces;
+using NetBlog.Application.Common.Interfaces.Services;
 
-namespace NetBlog.Api.Services;
+namespace NetBlog.Api.Common.Services;
 
 public class CurrentUserService : ICurrentUserService
 {

@@ -1,6 +1,6 @@
 namespace NetBlog.Domain.Common;
 
-public interface IHasDomainEvent
+public interface IHasDomainEven
 {
     public List<DomainEvent> DomainEvents { get; }
 }
@@ -13,5 +13,5 @@ public abstract class DomainEvent
     }
 
     public bool IsPublished { get; set; }
-    public DateTimeOffset DateOccurred { get; set; } = DateTimeOffset.UtcNow;
+    private DateTimeOffset DateOccurred { get; } = DateTimeOffset.UtcNow;
 }

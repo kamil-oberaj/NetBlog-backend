@@ -1,4 +1,4 @@
-using NetBlog.Application.Common.Interfaces;
+using NetBlog.Application.Common.Interfaces.Providers;
 
 namespace NetBlog.Infrastructure.Common.Providers;
 

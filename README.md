@@ -5,11 +5,10 @@ Project created as a portfolio idea, implementing TDD (integration and unit test
 
 ## Features
 
-- Clean architecture
+- Build using [Clean Architecture](https://github.com/jasontaylordev/CleanArchitecture/tree/net6.0)
 - Authentication/Authorization JWT Tokens
 - MediatR
-- FluentValidation
-- *this section will be updated along with project creation*
+- Currently 2 contexts: Business (main one), Identity and Error/logger (on its way!)
 
 
 ## Installation
@@ -29,19 +28,16 @@ Build:
 cd <Your_project_dir>/src/
 dotnet build NetBlog.Api
 ```
-Creating migration:
+
+## Migrations FROM SOLUTION DIRECTORY
+Creating business migration:
 ```bash
-dotnet ef migrations add "MigrationName" -s NetBlog.Api -p NetBlog.Infrastructure --context ApplicationDbContext --output-dir Persistence/Migrations --verbose
+dotnet ef migrations add "MigrationName" -s src/NetBlog.Api -p src/NetBlog.Infrastructure --context ApplicationDbContext --output-dir Persistence/Migrations/Business --verbose
 ```
 
-Removing last migration:
+Creating identity migration (will not be used?):
 ```bash
-dotnet ef migrations remove -s NetBlog.Api -p NetBlog.Infrastructure --context ApplicationDbContext 
-```
-Revert last migration:
-```bash
-dotnet ef database update "PreviousMigrationName" -s NetBlog.Api -p NetBlog.Infrastructure --context ApplicationDbContext
-dotnet ef migrations remove -s NetBlog.Api  -p NetBlog.Infrastructure --context ApplicationDbContext
+dotnet ef migrations add "MigrationName" -s src/NetBlog.Api -p src/NetBlog.Infrastructure --context ApplicationIdentityDbContext --output-dir Persistence/Migrations/Identity --verbose
 ```
 
 ## Documentation

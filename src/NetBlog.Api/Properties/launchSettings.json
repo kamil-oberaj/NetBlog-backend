@@ -10,9 +10,26 @@
   },
   "profiles": {
     "NetBlog.Api": {
+      "hotReloadEnabled": true,
       "commandName": "Project",
+      "launchBrowser": false,
+      "launchUrl": "swagger",
       "applicationUrl": "https://localhost:5001;http://localhost:5000",
       "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "dotnetRunMessages": true
+    },
+    "NetBlog": {
+      "commandName": "Project",
+      "launchBrowser": false,
+      "environmentVariables": {
+        "SQ_DB_KEEPALIVE": "60",
+        "SQ_DB_PASSWORD": "admin",
+        "SQ_DB_PORT": "5432",
+        "SQ_DB_HOST": "localhost",
+        "SQ_DB_NAME": "DigitalWallet",
+        "SQ_DB_USER": "postgres",
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
