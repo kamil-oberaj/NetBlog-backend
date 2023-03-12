@@ -1,36 +1,27 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>NetBlog.Api</RootNamespace>
-    <AssemblyName>NetBlog.Api</AssemblyName>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>46c1d4fc-3081-424a-808b-5151294247d2</UserSecretsId>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\NetBlog.Application\NetBlog.Application.csproj" />
-    <ProjectReference Include="..\NetBlog.Infrastructure\NetBlog.Infrastructure.csproj" /> 
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.3" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.3">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.10">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
-    <PackageReference Include="FluentValidation.AspNetCore" Version="11.2.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.10" />
-  </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Controllers" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <None Remove="FluentValidation.AspNetCore" />
-    <None Remove="Filters\" />
-    <None Remove="Microsoft.AspNetCore.Authentication.JwtBearer" />
-    <None Remove="Controllers\Identity\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controllers" />
-  </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\NetBlog.Application\NetBlog.Application.csproj" />
+      <ProjectReference Include="..\NetBlog.Infrastructure\NetBlog.Infrastructure.csproj" />
+    </ItemGroup>
+
 </Project>
