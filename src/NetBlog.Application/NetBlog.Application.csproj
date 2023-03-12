@@ -1,36 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\NetBlog.Domain\NetBlog.Domain.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\NetBlog.Domain\NetBlog.Domain.csproj" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <None Remove="MediatR.Extensions.Microsoft.DependencyInjection" />
-    <None Remove="MediatR" />
-    <None Remove="FluentValidation" />
-    <None Remove="Common\" />
-    <None Remove="Common\Exceptions\" />
-    <None Remove="FluentValidation.DependencyInjectionExtensions" />
-    <None Remove="AutoMapper.Extensions.Microsoft.DependencyInjection" />
-    <None Remove="Common\Behaviours\" />
-    <None Remove="Common\Security\" />
-    <None Remove="Authentication\" />
-    <None Remove="Authentication\Commands\" />
-    <None Remove="Authentication\Commands\SignUp\" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="FluentValidation.AspNetCore" Version="11.2.2" />
-    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.10" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Common\Exceptions\" />
-    <Folder Include="Common\Behaviours\" />
-  </ItemGroup>
 </Project>
