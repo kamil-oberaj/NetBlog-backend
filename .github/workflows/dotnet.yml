@@ -26,7 +26,7 @@ jobs:
       run: dotnet build --no-restore
 
     - name: Test
-      run: dotnet test NetBlog.Infrastructure.Tests\NetBlog.Infrastructure.Tests.csproj --no-build --verbosity normal
+      run: dotnet test NetBlog.Infrastructure.Tests\NetBlog.Infrastructure.Tests.csproj -l "console;verbosity=normal"
 
     - name: Publish Test Results
       uses: EnricoMi/publish-unit-test-result-action@v2.4.2
