@@ -8,6 +8,7 @@ builder.Services
     .RegisterApiServices()
     .RegisterInfrastructureServices(builder.Configuration);
 
+
 var app = builder.Build();
 
 

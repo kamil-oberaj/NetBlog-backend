@@ -8,19 +8,16 @@ namespace NetBlog.Infrastructure;
 
 public static class InfrastructureDependencyInjection
 {
-    public static IServiceCollection RegisterInfrastructureServices(
-        this IServiceCollection services,
+    public static void RegisterInfrastructureServices(this IServiceCollection services,
         IConfiguration configuration)
     {
 
-        services.AddDbContext(configuration);
+        services.AddDbContext(ref configuration);
         services.AddScoped<DbContextInitializer>();
-
-        return services;
     }
 
     private static void AddDbContext(this IServiceCollection services,
-        IConfiguration configuration)
+        ref IConfiguration configuration)
     {
 
         var dbConnection = new DatabaseConfiguration();
@@ -29,8 +26,12 @@ public static class InfrastructureDependencyInjection
         ArgumentNullException.ThrowIfNull(dbConnection);
 
         services.AddDbContext<NetBlogDbContext>(
-            options => options.UseNpgsql(dbConnection.GetConnectionString(),
-                npgOptions => npgOptions
-                    .MigrationsAssembly(typeof(NetBlogDbContext).Assembly.FullName)));
+            options =>
+            {
+                options.UseNpgsql(dbConnection.GetConnectionString(),
+                    npgOptions => npgOptions
+                        .MigrationsAssembly(typeof(NetBlogDbContext).Assembly.FullName));
+                options.UseSnakeCaseNamingConvention();
+            });
     }
 }

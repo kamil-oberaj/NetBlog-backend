@@ -23,11 +23,21 @@ jobs:
       run: dotnet restore
 
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build --configuration Release --no-restore
 
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+    - name: Tests
+      run: dotnet test --logger "trx;LogFilePrefix=TestResults.trx" --results-directory "TestResults"
+    
+    - name: Upload test results
+      if: always()
+      uses: actions/upload-artifact@v2
+      with:
+        name: TestResults
+        path: TestResults
 
     - name: Publish Test Results
-      uses: EnricoMi/publish-unit-test-result-action@v2.4.2
-
+      uses: EnricoMi/publish-unit-test-result-action@v2
+      if: always()
+      with:
+        xunit_files: "TestResults/xunit/**/*.xml"
+        trx_files: "TestResults/**/*.trx"
