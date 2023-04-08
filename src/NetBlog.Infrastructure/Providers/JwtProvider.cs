@@ -29,7 +29,6 @@ internal sealed class JwtProvider : IJwtProvider
             claims.Fill(new Claim(ClaimTypes.Role, userRole.Name!));
         }
 
-
         var token = new JwtSecurityToken(
             issuer: _jwtConfiguration.Issuer,
             audience: _jwtConfiguration.Audience,
