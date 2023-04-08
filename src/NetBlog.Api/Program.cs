@@ -1,6 +1,9 @@
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using NetBlog.Api;
 using NetBlog.Infrastructure;
 using NetBlog.Infrastructure.Initializers;
+using NetBlog.Infrastructure.Modules;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,9 +11,12 @@ builder.Services
     .RegisterApiServices()
     .RegisterInfrastructureServices(builder.Configuration);
 
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+
+builder.Host.ConfigureContainer<ContainerBuilder>((_, containerBuilder)
+    => containerBuilder.RegisterInfrastructureModules());
 
 var app = builder.Build();
-
 
 if (app.Environment.IsDevelopment())
 {

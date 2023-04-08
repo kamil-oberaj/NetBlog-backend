@@ -6,7 +6,6 @@ namespace NetBlog.Infrastructure;
 
 public class NetBlogDbContext : IdentityDbContext<User, Role, Guid>
 {
-
     public NetBlogDbContext(DbContextOptions options)
         : base(options)
     {

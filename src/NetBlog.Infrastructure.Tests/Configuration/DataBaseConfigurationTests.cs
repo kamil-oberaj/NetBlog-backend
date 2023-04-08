@@ -16,7 +16,7 @@ public sealed class DataBaseConfigurationTests
     public void Should_return_proper_connection_string()
     {
         var actual = _dbConfiguration.GetConnectionString();
-        var expected = $"{nameof(DatabaseConfiguration.ConnectionString)};User Id={nameof(DatabaseConfiguration.User)};" +
+        const string expected = $"{nameof(DatabaseConfiguration.ConnectionString)};User Id={nameof(DatabaseConfiguration.User)};" +
                        $"Password={nameof(DatabaseConfiguration.Password)}";
 
         Assert.Equal(expected, actual);

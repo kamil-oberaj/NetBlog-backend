@@ -2,7 +2,7 @@ namespace NetBlog.Infrastructure.Configuration;
 
 public class DatabaseConfiguration
 {
-    internal const string ConfigSectionName = "Database";
+    internal static string ConfigSectionName { get; set; } = "Database";
 
     public string? ConnectionString { get; init; }
     public string User { get; set; } = string.Empty;
@@ -12,7 +12,7 @@ public class DatabaseConfiguration
     {
         var connectionString = ConnectionString;
 
-        if (connectionString != null && !connectionString.EndsWith(';'))
+        if (connectionString?.EndsWith(';') == false)
         {
             connectionString += ';';
         }
