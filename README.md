@@ -1,5 +1,5 @@
 
-# NetBlog Backend [![.NET build](https://github.com/Sh0w3D/NetBlog-backend/actions/workflows/dotnet.yml/badge.svg?branch=Dev)](https://github.com/Sh0w3D/NetBlog-backend/actions/workflows/dotnet.yml)
+# NetBlog Backend
 
 Project created as a portfolio idea, implementing TDD (integration and unit tests), MediatR, FluentValidation, PostgreSql and many more!
 
@@ -20,45 +20,27 @@ Project created as a portfolio idea, implementing TDD (integration and unit test
 Run:
 ```bash
 cd <Your_project_dir>/src/
-dotnet run --project NetBlog.Api
+dotnet run --project NetBlogBackend.Api
 ```
 Run with watch:
 ```bash
 cd <Your_project_dir>/src/
-dotnet watch --project NetBlog.Api run
+dotnet watch --project NetBlogBackend.Api run
 ```
 Build:
 ```bash
-cd <Your_project_dir>/src/
-dotnet build NetBlog.Api
+cd <Your_project_dir>
+dotnet build NetBlogBackend.Api
 ```
 
 ## Migrations FROM SOLUTION DIRECTORY
 Creating business migration:
 ```bash
-dotnet ef migrations add "MigrationName" -s src/NetBlog.Api -p src/NetBlog.Infrastructure --context ApplicationDbContext --output-dir Persistence/Migrations/Business --verbose
+dotnet ef migrations add "MigrationName" -s src/NetBlogBackend.Api -p NetBlogBackend.Infrastructure --context NetBlogBackendDbContext --output-dir Migrations --verbose
 ```
 
 ## Documentation
 
 *this section will be updated soon*
-[DOCS LINK](https://github.com/Sh0w3D/NetBlog-backend/wiki/Project-documentation)
+[DOCS LINK](https://gitlab.phon31x.com/Sh0w3D/NetBlog-backend/-/wikis/home)
 
-
-## Running Tests 🚀
-
-To run tests, run the following command 
-
-```bash
-dotnet test
-```
-## License
-
-[MIT](https://github.com/Sh0w3D/NetBlog-backend/blob/Dev/LICENSE.md)
-
-
-## Related
-
-Related project
-
-[NetBlog Frontend](https://github.com/Sh0w3D/NetBlog-frontend)
